@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">DynamicReading</string>
+    <string name="start_fragment_label">Leitura Dinâmica</string>
+    <string name="dynamic_reading_fragment_label"> </string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="start">Start</string>
+    <string name="words_per_minute">Palavras por minuto (%s):</string>
+    <string name="number_of_words">Quantidade de palavras no texto (%s):</string>
+    <string name="enter_a_theme_for_your_story">Insira uma sinopse para sua história</string>
+    <string name="error_empty_text">Escreva uma sinopse para continuar</string>
+    <string name="history">Histórico de sinopses:</string>
+    <string name="language">PT-BR</string>
+    <string name="error_generating_text">Erro ao gerar texto</string>
+    <string name="synopses">Sinopse:</string>
+    <string name="text">Texto:</string>
+    <string name="text_size">Tamanho do texto:</string>
+    <string name="words">palavras</string>
+    <string name="delete_all">Apagar todo histórico</string>
+    <string name="question_delete">Deseja <b>apagar</b> sinopse?</string>
+    <string name="question_delete_all">Deseja <b>apagar</b> todo histórico de sinopses?</string>
+    <string name="yes">Sim</string>
+    <string name="no">Não</string>
+</resources>

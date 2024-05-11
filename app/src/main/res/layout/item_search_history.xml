@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    android:padding="10dp"
+    android:background="@drawable/bg_outline">
+
+    <TextView
+        android:id="@+id/textViewSynopsis"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Sinopse: Numa cidade pequena, um jovem desajeitado encontra um gato perdido. Juntos, embarcam numa jornada inesperada, espalhando sorrisos por onde passam. Com cada aventura, a amizade cresce, revelando que a felicidade está nas coisas simples da vida." />
+
+    <TextView
+        android:id="@+id/textViewText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ellipsize="end"
+        android:maxLines="3"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewSynopsis"
+        tools:text="Texto: Numa cidade pequena, um jovem desajeitado encontra um gato perdido. Juntos, embarcam numa jornada inesperada, espalhando sorrisos por onde passam. Com cada aventura, a amizade cresce, revelando que a felicidade está nas coisas simples da vida." />
+
+    <TextView
+        android:id="@+id/textViewSize"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewText"
+        tools:text="Tamanho do texto: 1500 paravras" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

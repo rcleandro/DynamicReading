@@ -1,0 +1,72 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Theme.DynamicReading" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/grey_light</item>
+        <item name="colorPrimaryVariant">@color/grey_dark</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/grey_dark</item>
+        <item name="colorSecondaryVariant">@color/black</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="android:windowBackground">@drawable/background_gradient</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">@color/black</item>
+
+        <item name="progressBarStyle">@style/Widget.App.ProgressBar</item>
+        <item name="appBarLayoutStyle">@style/Widget.App.AppBarLayout</item>
+        <item name="textInputStyle">@style/Widget.App.TextInputLayout</item>
+        <item name="sliderStyle">@style/Widget.App.Slider</item>
+        <item name="materialButtonStyle">@style/Widget.App.Button</item>
+    </style>
+
+    <!-- Progress bar style -->
+    <style name="Widget.App.ProgressBar" parent="Widget.Material3.CircularProgressIndicator">
+        <item name="android:indeterminate">true</item>
+        <item name="indicatorColor">@color/grey</item>
+    </style>
+
+    <!-- AppBarLayout style -->
+    <style name="Widget.App.AppBarLayout" parent="Widget.MaterialComponents.AppBarLayout.Primary">
+        <item name="android:background">@color/transparent</item>
+    </style>
+
+    <!-- TextInputLayout style -->
+    <style name="Widget.App.TextInputLayout" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/text_input_box_stroke</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="boxStrokeWidthFocused">1dp</item>
+        <item name="hintTextColor">@color/grey_dark</item>
+        <item name="cursorColor">@color/grey_dark</item>
+        <item name="boxCornerRadiusTopStart">8dp</item>
+        <item name="boxCornerRadiusTopEnd">8dp</item>
+        <item name="boxCornerRadiusBottomStart">8dp</item>
+        <item name="boxCornerRadiusBottomEnd">8dp</item>
+    </style>
+
+    <!-- Slider style -->
+    <style name="Widget.App.Slider" parent="Widget.Material3.Slider">
+        <item name="thumbColor">@color/grey_dark</item>
+        <item name="trackColorActive">@color/grey_dark</item>
+        <item name="trackColorInactive">@color/grey_light</item>
+        <item name="tickColorActive">@color/grey_dark</item>
+        <item name="tickColorInactive">@color/grey_light</item>
+    </style>
+
+    <!-- Button style -->
+    <style name="Widget.App.Button" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="android:textColor">@color/grey_dark</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:padding">18dp</item>
+        <item name="boxStrokeColor">@color/grey_dark</item>
+        <item name="cornerRadius">8dp</item>
+        <item name="strokeWidth">1dp</item>
+    </style>
+
+    <!-- Dialog theme -->
+    <style name="dialogTheme" parent="android:Theme.Holo.Dialog">
+        <item name="android:windowMinWidthMajor">90%</item>
+        <item name="android:windowMinWidthMinor">90%</item>
+    </style>
+</resources>

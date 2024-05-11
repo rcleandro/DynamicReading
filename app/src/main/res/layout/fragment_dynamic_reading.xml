@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".presentation.dynamicreading.DynamicReadingFragment">
+
+    <TextView
+        android:id="@+id/highlighted_word"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_margin="32dp"
+        android:gravity="center"
+        android:lines="1"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toTopOf="@+id/highlighted_scroll_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="viewing" />
+
+    <br.com.leandro.dynamicreading.presentation.dynamicreading.NonScrollableScrollView
+        android:id="@+id/highlighted_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/highlighted_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:justificationMode="inter_word"
+            android:textSize="18sp"
+            tools:text="This application, powered by Kotlin, offers a unique way of viewing texts. Instead of presenting the text..." />
+
+    </br.com.leandro.dynamicreading.presentation.dynamicreading.NonScrollableScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
