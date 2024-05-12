@@ -56,12 +56,6 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.setWordsPerMinute(SettingsPreferences(this).getWordsPerMinutePreference())
         viewModel.setNumberOfWords(SettingsPreferences(this).getNumberOfWordsPreference())
-
-        viewModel.startGeminiApi()
-
-        viewModel.progressBarVisibility.observe(this) {
-            binding.progressBar.visibility = if (it) View.VISIBLE else View.GONE
-        }
     }
 
     override fun onSupportNavigateUp(): Boolean {

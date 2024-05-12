@@ -29,7 +29,6 @@ import br.com.leandro.dynamicreading.extensions.hideKeyboard
 import br.com.leandro.dynamicreading.extensions.toast
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import java.util.GregorianCalendar
 
 /**
@@ -95,12 +94,32 @@ class StartFragment : Fragment() {
         viewModel.searchHistory.observe(viewLifecycleOwner) { history ->
             setAdapter(history)
         }
+
+        viewModel.responseText.observe(viewLifecycleOwner) { responseText ->
+            responseText?.let { saveGeneratedText(responseText) }
+        }
+
+        viewModel.error.observe(viewLifecycleOwner) { error ->
+            error?.let {
+                requireContext().toast("${getString(R.string.error_generating_text)} | $error")
+            }
+        }
+
+        viewModel.progressBarVisibility.observe(viewLifecycleOwner) {
+            binding.progressBar.visibility = if (it) View.VISIBLE else View.GONE
+        }
     }
 
     override fun onResume() {
         super.onResume()
 
         loadHistoryDatabase()
+    }
+
+    override fun onPause() {
+        super.onPause()
+
+        viewModel.clearResponse()
     }
 
     /**
@@ -149,27 +168,31 @@ class StartFragment : Fragment() {
      * @param synopsis The user's input to generate the text from.
      */
     private fun generateText(synopsis: String) {
+        val numbersOfWords = activityViewModel.numberOfWords.value ?: 0
+        val language = getString(R.string.language)
+
+        viewModel.getGenerativeText(synopsis, numbersOfWords, language)
+    }
+
+    /**
+     * Saves the generated text to the database and starts the dynamic reading.
+     *
+     * @param text The generated text to save.
+     */
+    private fun saveGeneratedText(text: String) {
+        val history = SearchHistory(
+            date = GregorianCalendar.getInstance().time,
+            synopsis = binding.inputText.text.toString(),
+            text = text,
+            numberOfWords = activityViewModel.numberOfWords.value ?: 0,
+            language = getString(R.string.language)
+        )
+
         lifecycleScope.launch(Dispatchers.IO) {
-            val numbersOfWords = binding.sliderNumberOfWords.value.toInt()
-            val language = getString(R.string.language)
-            val text = activityViewModel.getGenerativeText(synopsis, numbersOfWords, language)
-
-            text?.let {
-                val history = SearchHistory(
-                    date = GregorianCalendar.getInstance().time,
-                    synopsis = synopsis,
-                    text = it,
-                    numberOfWords = numbersOfWords,
-                    language = language
-                )
-
-                db.searchHistoryDAO().insert(history)
-
-                withContext(Dispatchers.Main) {
-                    startDynamicReading(history)
-                }
-            } ?: requireContext().toast(getString(R.string.error_generating_text))
+            db.searchHistoryDAO().insert(history)
         }
+
+        startDynamicReading(history)
     }
 
     /**
@@ -232,12 +255,20 @@ class StartFragment : Fragment() {
         alert.show()
 
         buttonYes.setOnClickListener {
-            lifecycleScope.launch(Dispatchers.IO) {
-                db.searchHistoryDAO().delete(history)
-                loadHistoryDatabase()
-            }
+            deleteItemHistory(history)
+            alert.dismiss()
         }
         buttonNo.setOnClickListener { alert.dismiss() }
+    }
+
+    /**
+     * Deletes the given search history from the database.
+     */
+    private fun deleteItemHistory(history: SearchHistory) {
+        lifecycleScope.launch(Dispatchers.IO) {
+            db.searchHistoryDAO().delete(history)
+            loadHistoryDatabase()
+        }
     }
 
     /**
@@ -260,13 +291,20 @@ class StartFragment : Fragment() {
         alert.show()
 
         buttonYes.setOnClickListener {
-            lifecycleScope.launch(Dispatchers.IO) {
-                db.searchHistoryDAO().deleteAll()
-                loadHistoryDatabase()
-            }
+            deleteAllHistory()
             alert.dismiss()
         }
         buttonNo.setOnClickListener { alert.dismiss() }
+    }
+
+    /**
+     * Deletes all search history from the database.
+     */
+    private fun deleteAllHistory() {
+        lifecycleScope.launch(Dispatchers.IO) {
+            db.searchHistoryDAO().deleteAll()
+            loadHistoryDatabase()
+        }
     }
 
     /**
