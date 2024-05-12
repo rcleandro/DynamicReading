@@ -9,6 +9,11 @@ A leitura dinâmica é uma técnica que exibe palavras individualmente, uma de c
 Além disso, o aplicativo salva o texto gerado em um histórico de pesquisas, proporcionando aos usuários a conveniência de acessar facilmente textos previamente lidos ou gerados.
 
 
+![App - start screen](https://github.com/rcleandro/DynamicReading/assets/60019021/5e5d649f-d13a-44cd-95b8-44d752a265e3)
+
+https://github.com/rcleandro/DynamicReading/assets/60019021/c6f0b0ff-47ff-4d75-8bbb-954e90f27ac6
+
+
 ## Tecnologias Utilizadas
 
 - Kotlin
